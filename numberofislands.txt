@@ -1,0 +1,45 @@
+    void boundary(vector<vector<char>>& grid,int i,int j,vector<vector<bool>>& vis)
+    {
+        if(vis[i][j]||grid[i][j]=='0')
+            return;
+        vis[i][j]=true;
+        if(i>0)
+             boundary(grid,i-1,j,vis);
+        if(i<grid.size()-1)
+             boundary(grid,i+1,j,vis);
+        if(j>0)
+             boundary(grid,i,j-1,vis);
+        if(j<grid[0].size()-1)
+             boundary(grid,i,j+1,vis);
+        
+    }
+    int numIslands(vector<vector<char>>& grid) {
+   
+        if(grid.size()==0)
+            return {};
+        int n=0;
+        vector<vector<bool>> vis(grid.size(),vector<bool>(grid[0].size(),false));
+          
+          for(int i=0;i<grid.size();i++)
+          for(int j=0;j<grid[0].size();j++)
+          {
+              if(vis[i][j]||grid[i][j]=='0') continue;
+              n++;
+              boundary(grid,i,j,vis);
+          }
+        return n;
+    }
+int main()
+{
+int x,y,z,t1,t2;
+cin>>x>>y;
+vector<vector<int>> v<x,vector<int>(y,0)>;
+cin>>z;
+for(int i=0;i<z;i++)
+{
+cin>>t1>>t2;
+v[t1][t2]=1;
+cout<<numislands(v);
+}
+return 0;
+}

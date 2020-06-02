@@ -1,0 +1,39 @@
+case=1
+input=amazonalexa amazonprime amazonprimenow amazonprimevideo
+mep amz
+output=amazonprime amazonprimenow amazonprimevideo
+
+case=2
+input=codechef hackerrank hackerearth leetcode
+dec ece
+output=codechef leetcode
+
+case=3
+input=royalchallengers chennaisuperkings delhidaredevils rajasthanroyals mumbaiindians kolkatanightriders
+as ane srh crag
+output=chennaisuperkings royalchallengers
+
+case=4
+input=royalchallengers chennaisuperkings delhidaredevils rajasthanroyals mumbaiindians kolkatanightriders
+as ane srh crag royal
+output=royalchallengers
+
+case=5
+input=manmohan rammohan sammoham krishnamohan mohanbabu babumohan
+moam oh ana
+output=manmohan rammohan
+
+case=6
+input=manmohan rammohan sammoham krishnamohan mohanbabu babumohan
+moa baba
+output=babumohan mohanbabu
+
+case=7
+input=mounika kavya pranaya nandini kishore gopal ramu krishna mahesh
+an ni
+output=krishna mounika nandini
+
+case=8
+input=wide divide redevider provide provider covid vivid
+die iv
+output=divide provide provider redevider

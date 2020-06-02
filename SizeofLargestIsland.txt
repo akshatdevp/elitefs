@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+int ma=0;
+int dir[][2]={{0,1},{1,0},{0,-1},{-1,0},{1,1},{1,-1},{-1,-1},{-1,1}};
+int go(vector<vector<int> > v, vector<vector<bool> >& vis,int i, int j)
+{
+    
+    if(i<0||j<0||i>=v.size()||j>=v[0].size()||vis[i][j]||!v[i][j])return 0;
+    vis[i][j]=true;
+    int sur=1;
+    for(int a=0;a<8;a++)
+        sur+=go(v,vis,i+dir[a][0],j+dir[a][1]);
+        //cout<<sur<<endl;
+    ma=max(ma,sur);
+    return sur;
+}
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    vector<vector<int> > v(n,vector<int>(m,0));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++)
+            cin>>v[i][j];
+    vector<vector<bool> > vis(n,vector<bool>(m,false));
+    for(int i=0;i<n;i++)
+        for(int j=0;j<m;j++)
+        {
+            if(v[i][j]==0||vis[i][j])continue;
+            go(v,vis,i,j);
+        }
+    cout<<ma;
+    return 0;
+}

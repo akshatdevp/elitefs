@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b,c,maxa=0;
+    cin>>a>>b;
+    vector<vector<vector<int>>> v(a,vector<vector<int>>(b,vector<int>(5,0)));
+    for(int i=0;i<a;i++)
+    for(int j=0;j<b;j++)
+    {cin>>c;
+     fill(v[i][j].begin(),v[i][j].end(),c);
+    }
+    //u,d1,l,d2
+    for(int i=0;i<a;i++)
+    for(int j=0;j<b;j++)
+    {   
+        if(v[i][j][0]==1)
+        {
+            if(i>0)
+            {
+            v[i][j][1]+=v[i-1][j][1],maxa=max(v[i][j][1],maxa);
+            if(j>0)
+                v[i][j][2]+=v[i-1][j-1][2],maxa=max(v[i][j][2],maxa);
+            if(j<b-1)
+                v[i][j][3]+=v[i-1][j+1][3],maxa=max(v[i][j][3],maxa);    
+            }
+            if(j>0)
+            
+            {
+             v[i][j][4]+=v[i][j-1][4],maxa=max(v[i][j][4],maxa);
+            }
+        }
+    }
+    cout<<maxa;
+}

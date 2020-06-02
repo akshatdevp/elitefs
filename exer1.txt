@@ -1,0 +1,85 @@
+
+#include <bits/stdc++.h>
+
+#define MOD 1000000007
+#define LINF (1LL<<60)
+#define INF 2147483647
+#define PI 3.1415926535897932384626433
+#define ll long long
+#define pii pair<int,int>
+#define mp(x,y) make_pair((x),(y))
+
+using namespace std;
+
+string itos(int x){
+	stringstream ss;
+	ss << x;
+	return ss.str();
+}
+
+int n, m, res, bestlone;
+map<string, vector<int> > m1;
+
+string str;
+
+int main(){
+	//freopen("input.txt","r",stdin);
+	//freopen("output.txt","w",stdout);
+	ios_base::sync_with_stdio(false);
+	cin >> n >> m;
+	for(int i = 0, x; i < n; i++){
+		cin >> str >> x;
+		string t = str;
+		if(not m1.count(str))
+			m1[str] = vector<int>();
+		m1[str].push_back(x);
+	}
+	for(auto &x: m1)
+		sort(x.second.begin(), x.second.end(), greater<int>());
+	for(auto x: m1){
+		string str = x.first;
+		string t = str;
+		reverse(t.begin(), t.end());
+		vector<int> &v = x.second;
+		if(str > t)
+			continue;
+		else if(str == t){
+			for(int i = 0; i < v.size(); i+=2){
+				if(i+1 < v.size()){
+					int x = v[i], y = v[i+1];
+					if(x < 0)
+						break;
+					else if(y < 0){
+						if(x+y > 0){
+							bestlone = max(bestlone, -y);
+							res += x+y;
+						}
+						else
+							bestlone = max(bestlone, x);
+					}
+					else
+						res += x+y;
+				}
+				else{
+					int x = v[i];
+					if(x < 0)
+						break;
+					bestlone = max(bestlone, x);
+				}
+			}
+		}
+		else{
+			vector<int> &v2 = m1[t];
+			for(int i = 0; i < v.size() && i < v2.size(); i++){
+				if(v[i] + v2[i] < 0)
+					break;
+				else
+					res += v[i] + v2[i];
+			}
+		}
+	}
+	res += bestlone;
+	cout << res << endl;
+	return 0;
+}
+ 

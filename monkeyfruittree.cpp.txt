@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int h,w,t1,t2,m1,m2,nf,a,b;
+    cin>>h>>w>>t1>>t2>>m1>>m2>>nf;
+    vector<pair<int,int>> v;
+    for(int i=0;i<nf;i++){
+    cin>>a>>b;
+    v.push_back(pair<int,int>(a,b));}
+    int max=INT_MAX,ma1,ma2, asd;
+    for(int i=0;i<v.size();i++)
+    {
+         int temp=abs(v[i].first-m1)+abs(v[i].second-m2);
+        if(temp<max)
+        {max=temp;ma1=v[i].first;ma2=v[i].second;asd=i;}
+    }
+    int dist=max+abs(ma1-t1)+abs(ma2-t2);
+    v.erase(v.begin()+asd);
+    for(auto i:v)
+    {
+        dist+=2*(abs(i.first-t1)+abs(i.second-t2));
+    }
+    cout<<dist;
+}
